@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg{
+    color: #ff0000;
+}
+.clip-path-polygon{
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
+}
