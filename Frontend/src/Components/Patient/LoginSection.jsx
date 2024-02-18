@@ -44,9 +44,7 @@ function LoginSectionUser() {
 
        axiosInstance.post("/login", LoginDetail)
         .then((res) => {
-          console.log(res);
-          console.log(res.data);
-          console.log(res.data.token);
+         
       
           if (res.data.token) {
               const jwtToken = res.data.token 

@@ -40,23 +40,25 @@ const login = async (req, res) => {
         }
        
         const passwordmatch = await bcrypt.compare(req.body.password, user.password)
-        console.log("2")
+        
         if (passwordmatch) {
 
             const secure = {
                 _id: tokenProducer,
                 role:"Doctor"
-                          }
+                          } 
         
             const token = jwt.sign(secure, process.env.jwtsecretDoctor)
             console.log("3   Token produced and response sent")
+            console.log(user.ProfilePicture)
 
             res.json({
                 status: "success",
                 name: user.name,
                 token,
                 login: true,
-                email: tokenProducer
+                email: tokenProducer,
+                ProfilePicture:user.ProfilePicture
             })
         }
         else {

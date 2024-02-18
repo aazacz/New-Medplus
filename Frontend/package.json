@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
     "dotenv": "^16.4.1",
@@ -27,6 +31,7 @@
     "react-router-dom": "^6.21.3",
     "react-spinners": "^0.13.8",
     "react-table": "^7.8.0",
+    "redux-persist": "^6.0.0",
     "sweetalert2": "^11.10.4"
   },
   "devDependencies": {

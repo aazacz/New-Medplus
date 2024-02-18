@@ -13,6 +13,10 @@ const doctorSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  ProfilePicture: {
+    type: String,
+    required: false
+  },
   Department: {
     type: String,
     required: true

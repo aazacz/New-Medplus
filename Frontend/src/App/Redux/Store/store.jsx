@@ -1,18 +1,32 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { persistReducer, persistStore,REGISTER } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { loginsliceReducer } from "../Slice/userSlice"; 
 import { AdminloginsliceReducer } from "../Slice/adminSlice"; 
+import { DoctorloginsliceReducer } from "../Slice/doctorSlice";  
 
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-export default configureStore({
+const rootReducer = combineReducers({ 
+  login: loginsliceReducer,
+  doctor: DoctorloginsliceReducer,
+  admin: AdminloginsliceReducer,
+});
 
-reducer:{
-        login: loginsliceReducer,
-      
-        admin:AdminloginsliceReducer,
-        }
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-})
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [REGISTER],
+    },
+  }),
+  
+});
 
-
- 
-
+export const persistor = persistStore(store);

@@ -44,6 +44,8 @@ import NewConsultation from '../Components/Patient/NewConsultation';
 import PrivateLoginRoute from '../Components/PrivateRoute/PrivateLoginRoute';
 import DoctorLogin from '../Pages/DoctorLogin';
 import LoginSectionDoctor from '../Components/Doctor/LoginSectionDoctor';
+import DoctorDashboard from '../Pages/DoctorDashboard';
+import DoctorOverview from '../Components/Doctor/DoctorOverview';
 // import { Routes, Route } from 'react-router-dom';
 // import PrivateRoute from './components/PrivateRoute.jsx';
 // import NextConsultation from './components/Doctor/NextConsultation.jsx';
@@ -72,6 +74,15 @@ const Routers = () => {
           <Route index element={<LoginSectionDoctor />} />
           {/* <Route path='verifyotp' element={<LoginSectionOtpVerify />} /> */}
         </Route>
+         
+        <Route path='/doctordashboard' element={ <DoctorDashboard /> }>
+          <Route index element={<DoctorOverview />} />
+          {/* <Route path='Overview' element={<DoctorOverview />} />
+          <Route path='labresult' element={<Labresult />} />
+          <Route path='consultation' element={<NextConsultation/>} />
+          <Route path='profile' element={<div>profile loaded</div>} /> */}
+        </Route>
+         
           {/*
          
           <Route path='Profile' element={<ProfileUser />} />
@@ -86,13 +97,6 @@ const Routers = () => {
 
         <Route path='/doctor/signup' element={<DoctorSignup />} />
 
-        <Route path='/doctordashboard' element={ <DoctorDashboard /> }>
-          <Route index element={<DoctorOverview />} />
-          <Route path='Overview' element={<DoctorOverview />} />
-          <Route path='labresult' element={<Labresult />} />
-          <Route path='consultation' element={<NextConsultation/>} />
-          <Route path='profile' element={<div>profile loaded</div>} />
-        </Route>
 
         <Route path='/admin' element={<AdminLogin />}>
           <Route index element={<LoginSectionAdmin />} />

@@ -57,24 +57,10 @@ export const loginslice = createSlice({
 
 })
 
-export const screensizeSlice = createSlice({
-  name: "screensize",
-  initialState: [],
-  reducers: {
-    size: (state, action) => {
-        return {
-        ...state,
-        size: action.payload.size,
-      }
-    }
-  }
-})
+
 
 
 
 export const { updateUserData } = loginslice.actions;
 export const { loginUser } = loginslice.actions;
 export const loginsliceReducer = loginslice.reducer;
-
-export const { size } = screensizeSlice.actions;
-export const screensizeReducer = screensizeSlice.reducer 

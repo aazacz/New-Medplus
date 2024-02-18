@@ -48,8 +48,10 @@ const auth = (role) => (req, res, next) => {
         }
     }
     else if(role === "Doctor"){
+        console.log(req.headers);
+        // console.log(req.headers.authorization);
         const token = req.headers.authorization
-        // console.log("token in the auth section " + token);
+        console.log("token in the auth section " + token);
        
         if (!token) {
             console.log("not authorised in Node JS");

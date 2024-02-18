@@ -8,25 +8,7 @@ import NavbarUser from '../Components/Patient/NavbarUser';
 const list = []
 
 function DoctorLogin() {
-//   const [authenticated, setAuthenticated] = useState(false);
-//   const navigate = useNavigate();
 
-//   useEffect(() => {
-//     const checkAuthentication = async () => {
-//       const isAuthenticated = await DocotorAuthCheck();
-//       setAuthenticated(isAuthenticated);
-//       console.log("useeffect running " + isAuthenticated);
-//     };
-//     checkAuthentication();
-//   }, []);
-
-//   useEffect(() => {
-//     console.log('authenticated:', authenticated); // Debugging: Check the value of authenticated
-//     if (authenticated) {
-//       console.log('Navigating to /DoctorDashboard'); // Debugging: Check if navigation is triggered
-//       navigate('/DoctorDashboard');
-//     }
-//   }, [authenticated, navigate]);
 
   return (
     <>

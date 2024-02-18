@@ -5,15 +5,22 @@ import axios from "axios";
 
 //slice for login purpose
 export const loginslice = createSlice({
-    name: "loginUser",
-    initialState: [],
+    name: "loginDoctor",
+    initialState: {
+      name: '',
+      email: '',
+      login: '',
+      token: '',
+      Picture: '',
+      Department:'',
+      Fellowship:'',
+      Username:'',
+      Date:[]
+    },
     reducers: {
-        loginUser:(state,action)=>{
-            // state.name  = action.payload.name,
-            // state.email = action.payload.email,
-            // state.login = action.payload.login,
-            // state.token = action.payload.token
-            const { name, email, login, token,image } = action.payload;
+      loginDoctor:(state,action)=>{
+         
+            const { name, email, login, token,Picture } = action.payload;
     
       return {
         ...state,
@@ -21,7 +28,7 @@ export const loginslice = createSlice({
         email: email,
         login: login,
         token: token,
-        image: image,
+        Picture: Picture,
       };
         }
       }
@@ -29,5 +36,5 @@ export const loginslice = createSlice({
 
 
 
-    export const { loginUser } = loginslice.actions;
-    export const loginsliceReducer = loginslice.reducer;
+    export const { loginDoctor } = loginslice.actions;
+    export const DoctorloginsliceReducer = loginslice.reducer;

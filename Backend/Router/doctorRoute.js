@@ -5,9 +5,12 @@ const auth              = require('../middleware/authentication')
 const multer            = require('multer')
 const imageUploadController = require("../Controller/ImageUploadController")
 const path          = require('path')
-
 doctorRoute.use(express.json())
 doctorRoute.use(express.urlencoded({extended:true}))
+
+
+
+
 
 const Authentication = auth("Doctor")
 
@@ -29,7 +32,7 @@ doctorRoute.get("/checkAuth",Authentication,doctorController.checkAuth);
 doctorRoute.get("/login", doctorController.login);
 doctorRoute.post("/login", doctorController.login);
 doctorRoute.post("/signup", doctorController.signup);
-doctorRoute.post("/saveimage", upload.single('blob'), imageUploadController.DoctorProfileImage);
+doctorRoute.post("/saveimage", upload.single('blob'),Authentication,imageUploadController.DoctorProfileImage);
 
 
 

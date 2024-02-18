@@ -5,7 +5,7 @@ import logo from "../../assets/MED+Logo.png"
 import axiosInstanceDoctor from '../../Services/AxiosInstance/Doctor/AxiosDoctor'
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from '../../App/Redux/Slice/userSlice'  
+import { loginDoctor } from '../../App/Redux/Slice/doctorSlice' 
 import toast from 'react-hot-toast';  // for showing small alerts
 import Cookies from "js-cookie"
 
@@ -50,11 +50,12 @@ function LoginSectionDoctor() {
               console.log("LOGIN function in fontend runned");
                 //after saving the JWT token in Session Storage,Storing the login details in Store
                 dispatch(
-                    loginUser({
+                    loginDoctor({
                         name: res.data.name,
                         email: res.data.email,
                         login: true,
-                        token: res.data.token
+                        token: res.data.token,
+                        Picture: res.data.ProfilePicture
                     })
                 )
                 navigate("/DoctorDashboard")
@@ -126,7 +127,7 @@ function LoginSectionDoctor() {
                             </div>
                             <div className='flex h-[50px] w-full mt-6 items-center justify-center '>
 
-                                <button className='rounded-[4px] text-white w-[120px] bg-blue h-8' type="submit"  > LOGIN</button>
+                                <button className='rounded-[4px] text-white w-[120px] bg-blue-600 h-8 up' type="submit"  > LOGIN</button>
                               
                                 
                                
