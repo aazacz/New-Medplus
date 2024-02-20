@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import group8img from "../../assets/Admin/group8.png"
-import LoginPhoto from "../../assets/Admin/photoLoginSession.png"
-import logo from "../../assets/MED+Logo.png"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAdmin } from '../../App/Redux/Slice/adminSlice'
-// import { useSignIn } from 'react-auth-kit'
+import Cookies from 'js-cookie'
 
 function LoginSectionAdmin() {
 
@@ -30,7 +27,7 @@ function LoginSectionAdmin() {
         console.log(res.data.token);
 
         if (res.data.token) {
-
+          Cookies.set("AdminjwtCookie",res.data.token,{expires:3})
           console.log("signIn function executed");
         }
 
