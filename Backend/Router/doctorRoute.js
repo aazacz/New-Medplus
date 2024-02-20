@@ -1,7 +1,7 @@
 const express = require("express")
 const doctorRoute = express()
 const doctorController = require('../Controller/doctorController')
-const auth              = require('../middleware/authentication') 
+const auth              = require('../Middleware/authentication') 
 const multer            = require('multer')
 const imageUploadController = require("../Controller/ImageUploadController")
 const path          = require('path')
@@ -10,18 +10,8 @@ doctorRoute.use(express.urlencoded({extended:true}))
 
 
 
-
-
 const Authentication = auth("Doctor")
 
-// const storage = multer.diskStorage({
-//     destination:(req,file,cb)=>{
-//         cb(null,"../Frontend/public")
-//     },
-//     filename:(req,file,cb)=>{
-//         cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname))
-//     }
-// })
 const storage = multer.memoryStorage()
 
 const upload = multer({  storage:storage  })

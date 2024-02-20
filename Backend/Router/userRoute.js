@@ -3,7 +3,7 @@ const userRoute         = express();
 const userController    = require("../Controller/userController")
 const multer            = require('multer')
 const path          = require('path')
-const auth              = require('../middleware/authentication') 
+const auth              = require('../Middleware/authentication') 
 const compression = require('compression');
 const imageUploadController = require("../Controller/ImageUploadController")
 
