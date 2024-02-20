@@ -10,6 +10,8 @@ import Notification from './Notification';
 
 function DoctorOverview() {
 
+  const apiUrl = import.meta.env.VITE_API_URL
+
   // Accessing state from Redux store using useSelector hook
   const user = useSelector((state) => state.doctor);
 
@@ -29,7 +31,7 @@ function DoctorOverview() {
 
     const token = Cookies.get("DoctorjwtCookie")
     console.log("token" + token)
-    await axios.post("http://localhost:6002/doctor/saveimage", { imgData: imgData }, {
+    await axios.post(`${apiUrl}/doctor/saveimage`, { imgData: imgData }, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': token

@@ -30,12 +30,12 @@ function LoginSectionOtpVerify() {
         SetLoginDetail({email:Email,otp:user.otp})
     },[])
    
-
+    const apiUrl = import.meta.env.VITE_API_URL
     const verifyOTP =(event)=>{
         event.preventDefault()
         if(user.otp===otp){
          
-            axios.post('http://localhost:6002/otplogin',LoginDetail)
+            axios.post(`${apiUrl}/otplogin`,LoginDetail)
             .then((res)=> {
                 console.log("response.data.token");
                 console.log(res.data.token);

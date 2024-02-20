@@ -2,8 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie"
 
 
-
-const baseURL = `http://localhost:6002/Doctor`
+const apiUrl = import.meta.env.VITE_API_URL
+const baseURL = apiUrl
 
 const axiosInstanceDoctor = axios.create()
 

@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from '../../App/Redux/Slice/userSlice' 
 
+const apiUrl = import.meta.env.VITE_API_URL
 
 function SignupSectiondoctor() {
 const navigate = useNavigate()
@@ -20,7 +21,7 @@ const navigate = useNavigate()
 
     const handleSubmit =async (event) => {
         event.preventDefault()
-        await axios.post("http://localhost:6002/doctor/signup",signup).then((res) => {
+        await axios.post(`${apiUrl}/doctor/signup`,signup).then((res) => {
            console.log("success");
            console.log(res);
            if(res.data.status === 'success'){
