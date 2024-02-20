@@ -1,6 +1,5 @@
 const express       = require("express");
 
-const jwt           = require("jsonwebtoken");
 const connectToMongoDB = require("./Config/mongodbServer");
 const userRoute     = require('./Router/userRoute.js');
 const adminRoute    = require("./Router/adminRoute.js")
