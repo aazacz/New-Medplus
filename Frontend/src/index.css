@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,3 +9,12 @@
 .clip-path-polygon{
     clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
 }
+.stroke{
+    /* text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; */
+    text-shadow:1px 1px #000000;
+}
+.input-style:focus {
+
+    border: 0;
+    
+  }

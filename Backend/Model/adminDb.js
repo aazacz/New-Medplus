@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const AdminSchema = mongoose.Schema({
+const AdminSchema =new mongoose.Schema({
 
     name:{
         type:String,
@@ -17,11 +17,11 @@ const AdminSchema = mongoose.Schema({
     isAdmin:{
         type:Number,
         required:true,
-        default:0
+        default:0 
     }
 
 })
+ 
 
-
-const Admin= new mongoose.model("Admin",AdminSchema)
+const Admin=  mongoose.model("Admins",AdminSchema)
 module.exports=Admin

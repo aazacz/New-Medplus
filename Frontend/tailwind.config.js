@@ -28,6 +28,8 @@ export default {
         'custom-conic': 'conic-gradient(at_left, rgb(134, 239, 172), rgb(253, 224, 71), rgb(249, 168, 212))',
       },
     },
+    fontFamily:{
+      Oswald:["Oswald", "sans-serif"]},
     colors: {
       ...colors,
       transparent: 'transparent',

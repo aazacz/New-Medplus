@@ -2,7 +2,6 @@ const express = require("express")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Doctor = require('../Model/doctorDb')
-const { jwtsecret } = process.env;
 const fs = require('fs');
 const path = require('path');
 

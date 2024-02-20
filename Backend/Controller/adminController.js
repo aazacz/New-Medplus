@@ -1,11 +1,9 @@
 const express   = require("express")
 const bcrypt    = require('bcrypt')
 const jwt       = require('jsonwebtoken')
-const User      = require('../Model/userDb.js')
-const { jwtsecret } = process.env;
-const otpGenerator      = require('otp-generator')
-const doctorDB  = require("../Model/doctorDb.js")
-
+const otpGenerator  = require('otp-generator')
+const adminDB   = require("../Model/adminDb.js")
+const doctorDB = require("../Model/doctorDb.js")
 const passwordHash = async (password) => {
     try {
       const passwordHash = await bcrypt.hash(password, 5);
@@ -24,30 +22,23 @@ const passwordHash = async (password) => {
       const tokenProducer = req.body.email
   
       console.log("1")
-      const user = await User.findOne({  email: req.body.email,isAdmin: 1}).catch((err) => {
-        console.log("Error in finding" + err);
-      })
-
+      const User = await adminDB.find()
+      const user = await adminDB.findOne({  email: req.body.email,isAdmin: 1})
       console.log("finded user" + user);
+      console.log("finded user" + User);
   
       if (!user) {  //if user not found in DB
         return res.json({ message: "Email or password doesnt match" })
       }
 
       if(user.isAdmin===1){
-
-
-        
         const secure = {
-            _id: tokenProducer,
-            role:"Admin"
-                       }
+                      _id: tokenProducer,
+                      role:"Admin"}
          
           const token = jwt.sign(secure, process.env.jwtsecretAdmin)
-          console.log(token);
+                 
     
-        
-          console.log("password verified");
             res.json({
               status: "success",
               name: user.name,
@@ -57,10 +48,7 @@ const passwordHash = async (password) => {
             })
         
       }
-  
-  
-  
-    }
+     }
     catch (error) {
       console.log(error);
       res.status(500).json({ status: "error", error: "Server error" });
@@ -75,7 +63,7 @@ const passwordHash = async (password) => {
       const encodedValue = req.query.data;
       console.log("encodedValue");
       console.log(encodedValue);
-      const user = await User.find().catch((err) => {
+      const user = await adminDB.find().catch((err) => {
       console.log("Error in finding" + err);
       })
      console.log(user);

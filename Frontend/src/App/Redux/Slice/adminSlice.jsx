@@ -1,17 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 
 
 //slice for login purpose
 export const Adminloginslice = createSlice({
-  name: "loginUser",
+  name: "loginAdmin",
   initialState: {
     name: "",
     email: "",
     login: false,
-    token: "",
-
+    token: ""
   },
   reducers: {
     loginAdmin: (state, action) => {
@@ -40,24 +38,10 @@ export const Adminloginslice = createSlice({
 
 })
 
-export const screensizeSlice = createSlice({
-  name: "screensize",
-  initialState: [],
-  reducers: {
-    size: (state, action) => {
-        return {
-        ...state,
-        size: action.payload.size,
-      }
-    }
-  }
-})
+
 
 
 
 export const { updateUserData } = Adminloginslice.actions;
 export const { loginAdmin } = Adminloginslice.actions;
 export const AdminloginsliceReducer = Adminloginslice.reducer;
-
-export const { size } = screensizeSlice.actions;
-export const screensizeReducer = screensizeSlice.reducer 

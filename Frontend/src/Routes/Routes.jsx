@@ -19,7 +19,7 @@ import Overview from '../Components/Patient/Overview';
 // import ProfileUser from "./components/Patient/ProfileUser";
 
 // Admin Components
-// import AdminLogin from "./pages/AdminLogin";
+
 // import LoginSectionAdmin from "./components/Admin/Admin_Login_Section/LoginSectionAdmin";
 // import AdminDashboard from "./pages/AdminDashboard";
 // import Customers from "./components/Admin/Customers";
@@ -46,6 +46,9 @@ import DoctorLogin from '../Pages/DoctorLogin';
 import LoginSectionDoctor from '../Components/Doctor/LoginSectionDoctor';
 import DoctorDashboard from '../Pages/DoctorDashboard';
 import DoctorOverview from '../Components/Doctor/DoctorOverview';
+import AdminLogin from '../Pages/AdminLogin';
+import LoginSectionAdmin from '../Components/Admin/LoginSectionAdmin';
+import AdminDashboard from '../Pages/AdminDashboard';
 // import { Routes, Route } from 'react-router-dom';
 // import PrivateRoute from './components/PrivateRoute.jsx';
 // import NextConsultation from './components/Doctor/NextConsultation.jsx';
@@ -64,7 +67,7 @@ const Routers = () => {
 
         <Route path='/signup' element={<PatientSignup />} />
 
-        <Route path='/userdashboard' element={<PrivateRoute AuthCheck={UserAuthCheck} >  <UserDashboard /> </PrivateRoute>}>
+        <Route path='/userdashboard' element={<PrivateRoute AuthCheck={UserAuthCheck}  role="User">  <UserDashboard /> </PrivateRoute>}>
           <Route index element={<Overview />} />
           <Route path='PreviousConsultation' element={<PreviousConsultation />} />
           <Route path='BookConsultation' element={<NewConsultation />} />
@@ -75,13 +78,27 @@ const Routers = () => {
           {/* <Route path='verifyotp' element={<LoginSectionOtpVerify />} /> */}
         </Route>
          
-        <Route path='/doctordashboard' element={ <DoctorDashboard /> }>
+        <Route path='/doctordashboard' element={ <PrivateRoute AuthCheck={DocotorAuthCheck}  role="Doctor" ><DoctorDashboard /></PrivateRoute> }>
           <Route index element={<DoctorOverview />} />
           {/* <Route path='Overview' element={<DoctorOverview />} />
           <Route path='labresult' element={<Labresult />} />
           <Route path='consultation' element={<NextConsultation/>} />
           <Route path='profile' element={<div>profile loaded</div>} /> */}
         </Route>
+         
+        <Route path='/admin' element={<AdminLogin />}>
+          <Route index element={<LoginSectionAdmin />} />
+        </Route>
+         
+        <Route path='/adminDashboard' element={<AdminDashboard />}>
+          <Route index element={<Overview />} />
+          {/* <Route path='customers' element={<Customers />} />
+          <Route path='DoctorsList' element={<DoctorsList />} />
+          <Route path='AddDoctor' element={<AddDoctor />} />
+          <Route path='Profile' element={<ProfileUser />} />
+          <Route path='labresult' element={<Labresult />} /> */}
+        </Route>
+         
          
           {/*
          
@@ -94,22 +111,13 @@ const Routers = () => {
 
 
 
+ */
+}
 
-        <Route path='/doctor/signup' element={<DoctorSignup />} />
+        {/* <Route path='/doctor/signup' element={<DoctorSignup />} /> */}
 
 
-        <Route path='/admin' element={<AdminLogin />}>
-          <Route index element={<LoginSectionAdmin />} />
-        </Route>
 
-        <Route path='/adminDashboard' element={<AdminDashboard />}>
-          <Route index element={<Overview />} />
-          <Route path='customers' element={<Customers />} />
-          <Route path='DoctorsList' element={<DoctorsList />} />
-          <Route path='AddDoctor' element={<AddDoctor />} />
-          <Route path='Profile' element={<ProfileUser />} />
-          <Route path='labresult' element={<Labresult />} />
-        </Route> */}
 
         <Route path='*' element={<ErrorPage />} />
       </Routes>

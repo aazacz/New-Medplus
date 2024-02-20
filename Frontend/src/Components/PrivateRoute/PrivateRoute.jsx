@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate }                from "react-router-dom";
 import LoaderScreen                   from "../Common/LoaderScreen";
 
-const PrivateRoute = ({ AuthCheck, children }) => {
+const PrivateRoute = ({children, ...rest}) => {
+
   let [loading, setLoading] = useState(true);
   const [authenticated, Setauthenticated] = useState(false)
+  const { AuthCheck,role } = rest;
 
   const navigate = useNavigate();
-  useEffect(() => {
 
-    const checkAuthentication = async () => {
+useEffect(() => {
+
+const checkAuthentication = async () => {
       const isAuthenticated = await AuthCheck()
       console.log("isAuthenticated  is " + isAuthenticated);
 
@@ -19,7 +22,8 @@ const PrivateRoute = ({ AuthCheck, children }) => {
         Setauthenticated(isAuthenticated)
       } else {
         Setauthenticated(isAuthenticated)
-        navigate("/login", { replace: true })
+        // navigate(`/${navigateto}`, { replace: true })
+        navigate(role === "User" ? "/login" : role === "Doctor" ? "/Doctor" : "/Admin",{replace: true});
       }
     }
 
